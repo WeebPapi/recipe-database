@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 import "./Filter.css";
 import { FaCaretDown } from "react-icons/fa";
-import { FaCaretUp } from "react-icons/fa";
 
 interface FilterProps {
   category: string;
@@ -19,7 +18,7 @@ const Filter: FC<FilterProps> = ({ category, filterList }) => {
         }}
       >
         <p>{category}</p>
-        {toggled ? <FaCaretUp /> : <FaCaretDown />}
+        <FaCaretDown className={toggled ? "rotateUp" : "rotateDown"} />
       </div>
       {toggled ? (
         <div className="filter-menu">
