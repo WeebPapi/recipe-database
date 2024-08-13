@@ -3,9 +3,10 @@ import { axiosInstance } from "../../axiosInstance";
 
 export const getRecipes = createAsyncThunk(
   "displayList/getRecipes",
-  async (_, ThunkApi) => {
+  async (payload: string, ThunkApi) => {
     try {
-      const res = await axiosInstance.get("1003464");
+      const res = await axiosInstance.get(payload);
+
       return ThunkApi.fulfillWithValue(res);
     } catch {
       return ThunkApi.rejectWithValue("Something Went Wrong");

@@ -1,14 +1,11 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../store";
 import { getRecipes } from "../../store/displayList/displayList.thunks";
 import "./FiltersBar.css";
 import { Filter } from "../";
 import { filtersBarData } from "../../data";
-import { AsyncThunkAction, GetThunkAPI } from "@reduxjs/toolkit";
-import { AxiosResponse } from "axios";
 
 const FiltersBar = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <div>
       {filtersBarData.map((item) => (
@@ -21,7 +18,7 @@ const FiltersBar = () => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          dispatch(getRecipes());
+          dispatch(getRecipes("716429/information"));
         }}
       >
         Click
