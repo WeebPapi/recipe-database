@@ -22,6 +22,7 @@ const initialState: {
     ingredients: string[];
     diet: string[];
   };
+  currentUrl: string;
 } = {
   displayList: [],
   filters: {
@@ -30,6 +31,7 @@ const initialState: {
     ingredients: [],
     diet: [],
   },
+  currentUrl: "random?number=5&",
 };
 
 const displayListSlice = createSlice({
@@ -48,10 +50,20 @@ const displayListSlice = createSlice({
     ) => {
       state.filters[action.payload.type].push(action.payload.name);
     },
+    filterUrl: (state, action: { payload: string }) => {
+      state.currentUrl =
+        "complexSearch?addRecipeInformation=true&fillIngredients=true&" +
+        action.payload +
+        "&number=5";
+    },
   },
   extraReducers(builder) {
     builder.addCase(getRecipes.fulfilled, (state, action) => {
-      const recipes = action.payload.data.recipes;
+      console.log(action);
+      let recipes;
+      if (action.payload.data.recipes) recipes = action.payload.data.recipes;
+      if (action.payload.data.results) recipes = action.payload.data.results;
+
       state.displayList = recipes.map((data: RecipeType) => ({
         id: data.id,
         image: data.image,
@@ -66,5 +78,5 @@ const displayListSlice = createSlice({
   },
 });
 
-export const { addFilter } = displayListSlice.actions;
+export const { addFilter, filterUrl } = displayListSlice.actions;
 export const displayListReducer = displayListSlice.reducer;

@@ -9,7 +9,7 @@ interface FilterLinkProps {
 const FilterLink: React.FC<FilterLinkProps> = ({ category, name }) => {
   const dispatch = useAppDispatch();
   const addFilterToArray = () => {
-    dispatch(addFilter({ type: category, name }));
+    dispatch(addFilter({ type: category, name: name.toLowerCase() }));
   };
   return (
     <div
