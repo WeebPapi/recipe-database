@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getRecipes } from "./displayList.thunks";
 import { Ingredients } from "../../Components/DisplayedCards/DisplayedCards";
+import { RecipeType } from "../../recipeType";
 
 interface DisplayListElement {
   id: number;
@@ -15,20 +16,43 @@ interface DisplayListElement {
 
 const initialState: {
   displayList: DisplayListElement[];
-  filters: string[];
+  filters: {
+    cuisine: string[];
+    type: string[];
+    ingredients: string[];
+    diet: string[];
+  };
 } = {
   displayList: [],
-  filters: [],
+  filters: {
+    cuisine: [],
+    type: [],
+    ingredients: [],
+    diet: [],
+  },
 };
 
 const displayListSlice = createSlice({
   name: "displayList",
   initialState,
-  reducers: {},
+  reducers: {
+    addFilter: (
+      state,
+      action: {
+        payload: {
+          type: "cuisine" | "type" | "ingredients" | "diet";
+          name: string;
+        };
+        type: string;
+      }
+    ) => {
+      state.filters[action.payload.type].push(action.payload.name);
+    },
+  },
   extraReducers(builder) {
     builder.addCase(getRecipes.fulfilled, (state, action) => {
-      const data = action.payload.data;
-      state.displayList.push({
+      const recipes = action.payload.data.recipes;
+      state.displayList = recipes.map((data: RecipeType) => ({
         id: data.id,
         image: data.image,
         readyInMinutes: data.readyInMinutes,
@@ -37,9 +61,10 @@ const displayListSlice = createSlice({
         vegetarian: data.vegetarian,
         dishTypes: data.dishTypes,
         extendedIngredients: data.extendedIngredients,
-      });
+      }));
     });
   },
 });
 
+export const { addFilter } = displayListSlice.actions;
 export const displayListReducer = displayListSlice.reducer;

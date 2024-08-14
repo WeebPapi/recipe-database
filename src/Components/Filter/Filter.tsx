@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
 import "./Filter.css";
 import { FaCaretDown } from "react-icons/fa";
+import { FilterLink } from "../";
 
 interface FilterProps {
-  category: string;
+  category: "cuisine" | "type" | "ingredients" | "diet";
   filterList: string[];
 }
 
@@ -23,7 +24,7 @@ const Filter: FC<FilterProps> = ({ category, filterList }) => {
       {toggled ? (
         <div className="filter-menu">
           {filterList.map((item) => (
-            <div className="filter-menu-item">{item}</div>
+            <FilterLink category={category} name={item} />
           ))}
         </div>
       ) : null}

@@ -6,7 +6,6 @@ export const getRecipes = createAsyncThunk(
   async (payload: string, ThunkApi) => {
     try {
       const res = await axiosInstance.get(payload);
-
       return ThunkApi.fulfillWithValue(res);
     } catch {
       return ThunkApi.rejectWithValue("Something Went Wrong");
