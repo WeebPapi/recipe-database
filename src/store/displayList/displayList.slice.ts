@@ -14,12 +14,20 @@ interface DisplayListElement {
   extendedIngredients: Ingredients[];
 }
 
+interface FilterActionInterface {
+  payload: {
+    type: FilterType;
+    name: string;
+  };
+  type: string;
+}
+
 const initialState: {
   displayList: DisplayListElement[];
   filters: {
     cuisine: string[];
     type: string[];
-    ingredients: string[];
+    includeIngredients: string[];
     diet: string[];
   };
   currentUrl: string;
@@ -28,29 +36,37 @@ const initialState: {
   filters: {
     cuisine: [],
     type: [],
-    ingredients: [],
+    includeIngredients: [],
     diet: [],
   },
   currentUrl: "random?number=5&",
 };
 
+export type FilterType = "cuisine" | "type" | "includeIngredients" | "diet";
+
 const displayListSlice = createSlice({
   name: "displayList",
   initialState,
   reducers: {
-    addFilter: (
-      state,
-      action: {
-        payload: {
-          type: "cuisine" | "type" | "ingredients" | "diet";
-          name: string;
-        };
-        type: string;
+    addFilter: (state, action: FilterActionInterface) => {
+      if (!state.filters[action.payload.type].includes(action.payload.name))
+        state.filters[action.payload.type].push(action.payload.name);
+    },
+    removeFilter: (state, action: FilterActionInterface) => {
+      if (state.filters[action.payload.type].includes(action.payload.name)) {
+        const list = state.filters[action.payload.type];
+        state.filters[action.payload.type] = list.filter(
+          (item) => item !== action.payload.name
+        );
       }
-    ) => {
-      state.filters[action.payload.type].push(action.payload.name);
     },
     filterUrl: (state, action: { payload: string }) => {
+      // if (
+      //   state.currentUrl !==
+      //   "complexSearch?addRecipeInformation=true&fillIngredients=true&" +
+      //     action.payload +
+      //     "&number=5"
+      // )
       state.currentUrl =
         "complexSearch?addRecipeInformation=true&fillIngredients=true&" +
         action.payload +
@@ -78,5 +94,5 @@ const displayListSlice = createSlice({
   },
 });
 
-export const { addFilter, filterUrl } = displayListSlice.actions;
+export const { addFilter, filterUrl, removeFilter } = displayListSlice.actions;
 export const displayListReducer = displayListSlice.reducer;

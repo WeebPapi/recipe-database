@@ -43,4 +43,4 @@ const Badge: React.FC<BadgeProps> = ({ type }) => {
   );
 };
 
-export default Badge;
+export default React.memo(Badge);

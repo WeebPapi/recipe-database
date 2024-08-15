@@ -1,0 +1,15 @@
+.filter-link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.filter-link p {
+  margin: 5px 0;
+}
+.filter-link span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useAppDispatch } from "../../store";
 import { RecipeCard } from "../";
 import { RootState } from "../../store";
@@ -38,12 +38,15 @@ const DisplayedCards = () => {
   const currentUrl = useSelector(
     (state: RootState) => state.displayList.currentUrl
   );
+  const mounted = useRef(false);
   useEffect(() => {
-    dispatch(getRecipes(currentUrl));
+    if (mounted.current) dispatch(getRecipes(currentUrl));
+
+    mounted.current = true;
   }, [currentUrl]);
   useEffect(() => {
     const filteredParams = Object.fromEntries(
-      Object.entries(filters).filter(([key, value]) => value.length > 0)
+      Object.entries(filters).filter(([_, value]) => value.length > 0)
     );
 
     const queryString = new URLSearchParams(
@@ -79,4 +82,4 @@ const DisplayedCards = () => {
   );
 };
 
-export default DisplayedCards;
+export default React.memo(DisplayedCards);

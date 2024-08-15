@@ -1,7 +1,8 @@
 import { nanoid } from "@reduxjs/toolkit";
+import { FilterType } from "./store/displayList/displayList.slice";
 
 interface FilterData {
-  category: string;
+  category: FilterType;
   filterList: string[];
   id: string;
 }
@@ -12,7 +13,7 @@ export const filtersBarData: FilterData[] = [
     id: nanoid(6),
   },
   {
-    category: "ingredients",
+    category: "includeIngredients",
     filterList: [
       "Chicken",
       "Beef",

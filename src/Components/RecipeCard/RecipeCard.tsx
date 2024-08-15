@@ -120,4 +120,4 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
   );
 };
 
-export default RecipeCard;
+export default React.memo(RecipeCard);
