@@ -1,24 +1,24 @@
-import { RouteObject } from "react-router-dom";
-import { Layout } from "./Components";
-import { DetailPage, FavoritesPage, HomePage } from "./Pages";
+import React from "react"
+import { Layout } from "./Components"
+import { DetailPage, FavoritesPage, HomePage } from "./Pages"
 
-export const routes: RouteObject[] = [
+export const routes = [
   {
     path: "/",
-    element: Layout(),
+    element: React.createElement(Layout),
     children: [
       {
         path: "/",
-        element: HomePage(),
+        element: React.createElement(HomePage),
       },
       {
         path: "/recipes/:recipeId",
-        element: DetailPage(),
+        element: React.createElement(DetailPage),
       },
       {
         path: "/favorites",
-        element: FavoritesPage(),
+        element: React.createElement(FavoritesPage),
       },
     ],
   },
-];
+]

@@ -9,7 +9,20 @@ interface FilterData {
 export const filtersBarData: FilterData[] = [
   {
     category: "cuisine",
-    filterList: ["Italian", "Georgian", "French"],
+    filterList: [
+      "Eastern European",
+      "Italian",
+      "Greek",
+      "French",
+      "Asian",
+      "American",
+      "Mexican",
+      "Indian",
+      "Chinese",
+      "Japanese",
+      "Thai",
+      "Korean",
+    ],
     id: nanoid(6),
   },
   {
@@ -22,12 +35,21 @@ export const filtersBarData: FilterData[] = [
       "Pasta",
       "Tomato",
       "Potato",
+      "Cheese",
+      "Eggs",
     ],
     id: nanoid(6),
   },
   {
     category: "diet",
-    filterList: ["Omnivore", "Vegan", "Vegetarian", "Keto", "Pescatarian"],
+    filterList: [
+      "Gluten Free",
+      "Vegan",
+      "Vegetarian",
+      "Ketogenic",
+      "Pescetarian",
+      "Paleo",
+    ],
     id: nanoid(6),
   },
   {

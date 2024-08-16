@@ -1,65 +1,65 @@
-import React, { useEffect, useRef } from "react";
-import { useAppDispatch } from "../../store";
-import { RecipeCard } from "../";
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
-import { getRecipes } from "../../store/displayList/displayList.thunks";
-import "./DisplayedCards.css";
-import { filterUrl } from "../../store/displayList/displayList.slice";
+import React, { useEffect, useRef } from "react"
+import { useAppDispatch } from "../../store"
+import { RecipeCard } from "../"
+import { RootState } from "../../store"
+import { useSelector } from "react-redux"
+import { getRecipes } from "../../store/displayList/displayList.thunks"
+import "./DisplayedCards.css"
+import { filterUrl } from "../../store/displayList/displayList.slice"
 export interface Ingredients {
-  aisle: string;
-  amount: number;
-  consistency: string;
-  id: number;
-  image: string;
+  aisle: string
+  amount: number
+  consistency: string
+  id: number
+  image: string
   measures: {
     metric: {
-      amount: number;
-      unitLong: string;
-      unitShort: string;
-    };
+      amount: number
+      unitLong: string
+      unitShort: string
+    }
     us: {
-      amount: number;
-      unitLong: string;
-      unitShort: string;
-    };
-  };
-  meta: [];
-  name: string;
-  original: string;
-  originalName: string;
-  unit: string;
+      amount: number
+      unitLong: string
+      unitShort: string
+    }
+  }
+  meta: []
+  name: string
+  original: string
+  originalName: string
+  unit: string
 }
 
 const DisplayedCards = () => {
-  const dispatch = useAppDispatch();
-  const list = useSelector((state: RootState) => state.displayList.displayList);
-  const filters = useSelector((state: RootState) => state.displayList.filters);
+  const dispatch = useAppDispatch()
+  const list = useSelector((state: RootState) => state.displayList.displayList)
+  const filters = useSelector((state: RootState) => state.displayList.filters)
   const currentUrl = useSelector(
     (state: RootState) => state.displayList.currentUrl
-  );
-  const mounted = useRef(false);
+  )
+  const mounted = useRef(false)
   useEffect(() => {
-    if (mounted.current) dispatch(getRecipes(currentUrl));
+    if (mounted.current) dispatch(getRecipes(currentUrl))
 
-    mounted.current = true;
-  }, [currentUrl]);
+    mounted.current = true
+  }, [currentUrl])
   useEffect(() => {
     const filteredParams = Object.fromEntries(
       Object.entries(filters).filter(([_, value]) => value.length > 0)
-    );
+    )
 
     const queryString = new URLSearchParams(
       Object.entries(filteredParams).reduce(
         (acc: { [key: string]: string }, [key, value]) => {
-          acc[key] = value.join(",");
-          return acc;
+          acc[key] = value.join(",")
+          return acc
         },
         {}
       )
-    ).toString();
-    dispatch(filterUrl(queryString));
-  }, [filters]);
+    ).toString()
+    dispatch(filterUrl(queryString))
+  }, [filters])
 
   return (
     <div className="displayed-cards">
@@ -79,7 +79,7 @@ const DisplayedCards = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(DisplayedCards);
+export default React.memo(DisplayedCards)

@@ -1,3 +1,15 @@
 .filters-bar {
   display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.filters-tag {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
 }

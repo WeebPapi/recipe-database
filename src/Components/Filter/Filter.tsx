@@ -1,45 +1,45 @@
-import React, { FC, useEffect, useState } from "react";
-import "./Filter.css";
-import { FaCaretDown } from "react-icons/fa";
-import { FilterLink } from "../";
-import { FilterType } from "../../store/displayList/displayList.slice";
-import { nanoid } from "@reduxjs/toolkit";
+import React, { FC, useEffect, useState } from "react"
+import "./Filter.css"
+import { FaCaretDown } from "react-icons/fa"
+import { FilterLink } from "../"
+import { FilterType } from "../../store/displayList/displayList.slice"
+import { nanoid } from "@reduxjs/toolkit"
 
 interface FilterProps {
-  category: FilterType;
-  filterList: string[];
+  category: FilterType
+  filterList: string[]
 }
 
 const Filter: FC<FilterProps> = ({ category, filterList }) => {
-  const [toggled, setToggled] = useState(false);
-  const [filterCategory, setFilterCategory] = useState("");
+  const [toggled, setToggled] = useState(false)
+  const [filterCategory, setFilterCategory] = useState("")
   useEffect(() => {
     switch (category) {
       case "includeIngredients":
-        setFilterCategory("Ingredients");
-        break;
+        setFilterCategory("Ingredients")
+        break
       case "cuisine":
-        setFilterCategory("Cuisine");
-        break;
+        setFilterCategory("Cuisine")
+        break
       case "type":
-        setFilterCategory("Type");
-        break;
+        setFilterCategory("Type")
+        break
       case "diet":
-        setFilterCategory("Diet");
-        break;
+        setFilterCategory("Diet")
+        break
       default:
-        setFilterCategory("");
+        setFilterCategory("")
     }
-  }, []);
+  }, [])
   return (
     <div className="filter-component">
       <div
         className="filter-visible"
         onClick={() => {
-          setToggled((prev) => !prev);
+          setToggled((prev) => !prev)
         }}
       >
-        <p>{filterCategory}</p>
+        <p className="filter-category-name">{filterCategory}</p>
         <FaCaretDown className={toggled ? "rotateUp" : "rotateDown"} />
       </div>
       {toggled ? (
@@ -50,7 +50,7 @@ const Filter: FC<FilterProps> = ({ category, filterList }) => {
         </div>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(Filter);
+export default React.memo(Filter)

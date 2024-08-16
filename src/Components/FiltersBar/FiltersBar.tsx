@@ -1,10 +1,11 @@
-import "./FiltersBar.css";
-import { Filter } from "../";
-import { filtersBarData } from "../../data";
+import "./FiltersBar.css"
+import { Filter } from "../"
+import { filtersBarData } from "../../data"
 
 const FiltersBar = () => {
   return (
     <div className="filters-bar">
+      <p className="filters-tag">Filters</p>
       {filtersBarData.map((item) => (
         <Filter
           key={item.id}
@@ -13,7 +14,7 @@ const FiltersBar = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default FiltersBar;
+export default FiltersBar

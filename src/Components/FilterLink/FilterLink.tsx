@@ -1,33 +1,33 @@
-import React, { useState } from "react";
-import { useAppDispatch } from "../../store";
+import React, { useState } from "react"
+import { useAppDispatch } from "../../store"
 import {
   addFilter,
   removeFilter,
   FilterType,
-} from "../../store/displayList/displayList.slice";
-import { IoIosCloseCircle } from "react-icons/io";
-import "./FilterLink.css";
+} from "../../store/displayList/displayList.slice"
+import { IoIosCloseCircle } from "react-icons/io"
+import "./FilterLink.css"
 interface FilterLinkProps {
-  category: FilterType;
-  name: string;
+  category: FilterType
+  name: string
 }
 
 const FilterLink: React.FC<FilterLinkProps> = ({ category, name }) => {
-  const [toggled, setToggled] = useState(false);
-  const dispatch = useAppDispatch();
+  const [toggled, setToggled] = useState(false)
+  const dispatch = useAppDispatch()
   const addFilterToArray = () => {
-    setToggled(true);
-    dispatch(addFilter({ type: category, name: name.toLowerCase() }));
-  };
+    setToggled(true)
+    dispatch(addFilter({ type: category, name: name.toLowerCase() }))
+  }
   const removeFilterFromArray = () => {
-    setToggled(false);
-    dispatch(removeFilter({ type: category, name: name.toLowerCase() }));
-  };
+    setToggled(false)
+    dispatch(removeFilter({ type: category, name: name.toLowerCase() }))
+  }
   return (
     <div
       style={{
         backgroundColor: toggled ? "#fff" : "transparent",
-        padding: "5px 8px",
+        padding: "3px 7px",
         borderRadius: "15px",
         width: "min-content",
       }}
@@ -41,17 +41,17 @@ const FilterLink: React.FC<FilterLinkProps> = ({ category, name }) => {
       <p
         style={{
           transition: "0.3s ease-in-out",
-          color: toggled ? "#19A519" : "#242424",
+          color: toggled ? "#19A519" : "#383636",
           cursor: "pointer",
         }}
         onClick={() => {
-          addFilterToArray();
+          addFilterToArray()
         }}
       >
         {name}
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default FilterLink;
+export default FilterLink

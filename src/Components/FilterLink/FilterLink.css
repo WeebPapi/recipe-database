@@ -5,6 +5,10 @@
 }
 .filter-link p {
   margin: 5px 0;
+  font-weight: 500;
+}
+.filter-link:hover p {
+  color: black !important;
 }
 .filter-link span {
   display: flex;

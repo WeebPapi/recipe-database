@@ -1,14 +1,14 @@
-import React from "react";
-import "./HomePage.css";
-import { DisplayedCards, FiltersBar } from "../../Components";
+import React from "react"
+import "./HomePage.css"
+import { DisplayedCards, FiltersBar } from "../../Components"
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
-    <div>
+    <div className="homepage-layout">
       <FiltersBar />
       <DisplayedCards />
     </div>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

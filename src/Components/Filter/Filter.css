@@ -6,9 +6,16 @@
   justify-content: flex-start;
   align-items: center;
   text-align: left;
-  margin-right: 20px;
 }
-.filter-visible {
+.filter-category-name {
+  transition: 0.4s ease-in-out;
+  font-weight: 700;
+  font-size: 18px;
+}
+.filter-category-name:hover {
+  color: #19a519;
+}
+.filter-component .filter-visible {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -29,10 +36,32 @@
   width: 100%;
 }
 .rotateUp {
+  animation: rotateUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   -webkit-animation: rotateUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 .rotateDown {
+  animation: rotateDown 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   -webkit-animation: rotateDown 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes rotateUp {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+@keyframes rotateDown {
+  0% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
 }
 
 @-webkit-keyframes rotateUp {
