@@ -84,6 +84,9 @@ const displayListSlice = createSlice({
           action.payload +
           "&number=5"
     },
+    resetUrl: (state) => {
+      state.currentUrl = "random?number=5&"
+    },
   },
   extraReducers(builder) {
     builder.addCase(getRecipes.fulfilled, (state, action) => {
@@ -125,5 +128,6 @@ const displayListSlice = createSlice({
   },
 })
 
-export const { addFilter, filterUrl, removeFilter } = displayListSlice.actions
+export const { addFilter, filterUrl, removeFilter, resetUrl } =
+  displayListSlice.actions
 export const displayListReducer = displayListSlice.reducer

@@ -1,0 +1,25 @@
+.ingredient-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px 25px;
+  border-bottom: 2px solid #eee;
+}
+.ingredient-info {
+  text-align: left;
+}
+.ingredient-name {
+  color: #004d25;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+.ingredient-aisle {
+  color: #bbb;
+  font-size: 14px;
+  margin: 3px 0 10px 0;
+}
+.ingredient-amount {
+  color: #343434;
+}

@@ -8,6 +8,7 @@ import RecipeCard from "./RecipeCard/RecipeCard"
 import FilterLink from "./FilterLink/FilterLink"
 import Badge from "./Badge/Badge"
 import LargeRecipe from "./LargeRecipe/LargeRecipe"
+import IngredientCard from "./IngredientCard/IngredientCard"
 
 export {
   Navbar,
@@ -20,4 +21,5 @@ export {
   FilterLink,
   Badge,
   LargeRecipe,
+  IngredientCard,
 }
