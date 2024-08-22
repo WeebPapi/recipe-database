@@ -3,9 +3,9 @@ import { getRecipeById, getRecipes } from "./displayList.thunks"
 import { Ingredients } from "../../Components/DisplayedCards/DisplayedCards"
 import { RecipeType } from "../../recipeType"
 
-interface DisplayListElement {
+export interface DisplayListElement {
   id: number
-  image?: string
+  image: string
   readyInMinutes: number
   dishTypes: string[]
   title: string

@@ -10,10 +10,10 @@
   background-color: #fff;
   margin-right: 30px;
   cursor: pointer;
-  transition: 0.1s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 .recipe-card:hover {
-  scale: 1.02;
+  transform: translateY(3%);
 }
 .recipe-card:hover .recipe-card-title {
   color: #254d13;
@@ -49,12 +49,15 @@
   font-weight: 700;
   font-size: 15px;
   text-align: left;
-  margin: 5px 5px 0 0;
+  margin: 5px 10px 0 0;
   transition: 0.3s ease-in-out;
 }
 .recipe-card-time {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 80px;
 }
 .recipe-card-minutes {
   color: #ccc;
@@ -77,7 +80,34 @@
 .recipe-card-badges {
   width: 90%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+.recipe-card-diet-badges {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.recipe-card-heart {
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recipe-card-heart,
+.recipe-card-heart > svg {
+  transition: 0.3s ease-in-out;
+}
+.recipe-card-heart > svg {
+  width: 18px;
+  height: 18px;
+}
+.recipe-card-heart:hover {
+  background-color: #eea9b8 !important;
+}
+.recipe-card-heart:hover > svg {
+  fill: #ff69b4;
 }
