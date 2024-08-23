@@ -1,10 +1,14 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { IngredientCard } from "../"
 import DOMPurify from "dompurify"
 import "./LargeRecipe.css"
 import { useAppDispatch } from "../../store"
 import { useSelector } from "react-redux"
 import { RootState } from "../../store"
+import {
+  addFavorite,
+  removeFavorite,
+} from "../../store/favoritesList/favoritesList.slice"
 import { getRecipeById } from "../../store/displayList/displayList.thunks"
 import {
   DetailedRecipe,
@@ -13,19 +17,44 @@ import {
 import { TbToolsKitchen2 } from "react-icons/tb"
 import { MdSoupKitchen } from "react-icons/md"
 import { FaClock } from "react-icons/fa6"
+import { FaHeart } from "react-icons/fa"
 import { nanoid } from "@reduxjs/toolkit"
 
 interface LargeRecipeProps {
-  id: string
+  id: number
 }
 
 const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
   const recipe = useSelector(
     (state: RootState) => state.displayList.detailedRecipe
   )
+  const favorites = useSelector((state: RootState) => state.favoritesList)
+  const [favorited, setFavorited] = useState(
+    favorites.filter((item) => item.id === id).length !== 0
+  )
   const recipeAsDetailedRecipe = recipe as DetailedRecipe
   const analyzedInstructions = recipeAsDetailedRecipe.analyzedInstructions
   const dispatch = useAppDispatch()
+  const addToFavorites = () => {
+    const newFavorited = !favorited
+    setFavorited(newFavorited)
+    if (newFavorited)
+      dispatch(
+        addFavorite({
+          id,
+          title: recipeAsDetailedRecipe.title,
+          readyInMinutes: recipeAsDetailedRecipe.readyInMinutes,
+          extendedIngredients: recipeAsDetailedRecipe.extendedIngredients.map(
+            (item) => item.name
+          ),
+          image: recipeAsDetailedRecipe.image,
+          dishTypes: recipeAsDetailedRecipe.dishTypes,
+          vegan: recipeAsDetailedRecipe.vegan,
+          vegetarian: recipeAsDetailedRecipe.vegetarian,
+        })
+      )
+    else if (!newFavorited) dispatch(removeFavorite(id))
+  }
   useEffect(() => {
     dispatch(getRecipeById(`${id}/information`))
     dispatch(resetUrl())
@@ -64,6 +93,14 @@ const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
                 <p>Ready in {recipeAsDetailedRecipe.readyInMinutes} minutes</p>
               </div>
             ) : null}
+            <div
+              className="favorite-badge"
+              onClick={addToFavorites}
+              style={{ backgroundColor: favorited ? "#555" : "#eea9b8" }}
+            >
+              <FaHeart fill={favorited ? "#eea9b8" : "#fff"} />
+              <p>{favorited ? "Unfavorite" : "Favorite"}</p>
+            </div>
           </div>
         </div>
         <div className="large-recipe-summary">
@@ -80,7 +117,7 @@ const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
           <h2 className="ingredients-heading">Ingredients</h2>
           <div className="large-recipe-ingredient-cards">
             {recipeAsDetailedRecipe?.extendedIngredients
-              ?.slice(0, 3)
+              ?.slice(0, 9)
               ?.map((ingredient) => (
                 <IngredientCard
                   key={nanoid(5)}

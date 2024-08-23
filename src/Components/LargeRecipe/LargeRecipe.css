@@ -10,7 +10,7 @@
   height: 100%;
 }
 .large-recipe-info {
-  max-width: 820px;
+  max-width: 1124px;
   width: 100%;
   height: max-content;
   display: flex;
@@ -34,7 +34,8 @@
   justify-content: center;
   align-items: center;
 }
-.minutes-badge {
+.minutes-badge,
+.favorite-badge {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -76,7 +77,7 @@
   margin: 2rem 0;
 }
 .large-recipe-ingredient-cards {
-  max-width: 840px;
+  max-width: 1124px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -85,4 +86,14 @@
 .large-recipe-instructions {
   color: black;
   text-align: left;
+}
+.favorite-badge {
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.favorite-badge > * {
+  padding: 0 5px;
+}
+.favorite-badge:hover {
+  background-color: #ff69b4 !important;
 }

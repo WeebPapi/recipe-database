@@ -1,9 +1,9 @@
 .nav-links {
-  position: absolute;
-  top: 0;
+  padding: 15px 0;
 }
 .nav-links a {
   color: #254d13;
   margin-right: 10px;
   z-index: 20;
+  font-size: 22px;
 }

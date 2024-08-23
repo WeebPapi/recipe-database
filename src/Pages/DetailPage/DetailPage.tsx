@@ -7,7 +7,7 @@ const DetailPage: React.FC = () => {
   const { recipeId } = useParams()
   return (
     <div>
-      <LargeRecipe id={recipeId ? recipeId : ""} />{" "}
+      <LargeRecipe id={recipeId ? parseInt(recipeId) : 0} />{" "}
     </div>
   )
 }

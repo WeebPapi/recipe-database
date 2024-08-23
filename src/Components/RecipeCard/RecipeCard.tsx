@@ -51,7 +51,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
   const dispatch = useAppDispatch()
 
   const goToDetails = () => {
-    navigate(`recipes/${id}`)
+    navigate(`/recipes/${id}`)
   }
   const addToFavorites = () => {
     const newFavorited = !favorited

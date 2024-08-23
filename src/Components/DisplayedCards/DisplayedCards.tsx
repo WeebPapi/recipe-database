@@ -45,20 +45,22 @@ const DisplayedCards = () => {
     mounted.current = true
   }, [currentUrl])
   useEffect(() => {
-    const filteredParams = Object.fromEntries(
-      Object.entries(filters).filter(([_, value]) => value.length > 0)
-    )
-
-    const queryString = new URLSearchParams(
-      Object.entries(filteredParams).reduce(
-        (acc: { [key: string]: string }, [key, value]) => {
-          acc[key] = value.join(",")
-          return acc
-        },
-        {}
+    if (mounted.current) {
+      const filteredParams = Object.fromEntries(
+        Object.entries(filters).filter(([_, value]) => value.length > 0)
       )
-    ).toString()
-    dispatch(filterUrl(queryString))
+
+      const queryString = new URLSearchParams(
+        Object.entries(filteredParams).reduce(
+          (acc: { [key: string]: string }, [key, value]) => {
+            acc[key] = value.join(",")
+            return acc
+          },
+          {}
+        )
+      ).toString()
+      dispatch(filterUrl(queryString))
+    }
   }, [filters])
 
   return (
