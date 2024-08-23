@@ -1,6 +1,6 @@
 .favorites-container {
   width: 100%;
-  height: max-content;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
   height: max-content;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 .favorited-recipes > * {

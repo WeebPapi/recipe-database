@@ -5,11 +5,7 @@ import { LargeRecipe } from "../../Components"
 
 const DetailPage: React.FC = () => {
   const { recipeId } = useParams()
-  return (
-    <div>
-      <LargeRecipe id={recipeId ? parseInt(recipeId) : 0} />{" "}
-    </div>
-  )
+  return <LargeRecipe id={recipeId ? parseInt(recipeId) : 0} />
 }
 
 export default DetailPage

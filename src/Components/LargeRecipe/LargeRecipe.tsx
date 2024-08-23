@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { IngredientCard } from "../"
 import DOMPurify from "dompurify"
 import "./LargeRecipe.css"
@@ -20,6 +20,8 @@ import { FaClock } from "react-icons/fa6"
 import { FaHeart } from "react-icons/fa"
 import { nanoid } from "@reduxjs/toolkit"
 
+const API_KEY = import.meta.env.VITE_API_KEY
+
 interface LargeRecipeProps {
   id: number
 }
@@ -28,6 +30,7 @@ const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
   const recipe = useSelector(
     (state: RootState) => state.displayList.detailedRecipe
   )
+  const mounted = useRef(false)
   const favorites = useSelector((state: RootState) => state.favoritesList)
   const [favorited, setFavorited] = useState(
     favorites.filter((item) => item.id === id).length !== 0
@@ -56,8 +59,11 @@ const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
     else if (!newFavorited) dispatch(removeFavorite(id))
   }
   useEffect(() => {
-    dispatch(getRecipeById(`${id}/information`))
-    dispatch(resetUrl())
+    if (mounted.current) {
+      dispatch(getRecipeById(`${id}/information?apiKey=${API_KEY}`))
+      dispatch(resetUrl())
+    }
+    mounted.current = true
   }, [])
   return (
     <div className="large-recipe-container">

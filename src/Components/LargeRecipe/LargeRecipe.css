@@ -1,7 +1,9 @@
 .large-recipe-container {
   display: flex;
+  height: max-content;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 5rem;
 }
 .large-recipe-image {
   max-width: 556px;
@@ -11,6 +13,7 @@
 }
 .large-recipe-info {
   max-width: 1124px;
+  height: min-content;
   width: 100%;
   height: max-content;
   display: flex;
@@ -62,6 +65,7 @@
 }
 .large-recipe-summary {
   max-width: 556px;
+  height: min-content;
   text-align: left;
   color: rgb(56, 52, 40);
 }
@@ -75,6 +79,7 @@
 }
 .large-recipe-ingredients {
   margin: 2rem 0;
+  height: min-content;
 }
 .large-recipe-ingredient-cards {
   max-width: 1124px;

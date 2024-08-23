@@ -13,7 +13,7 @@ export const getRecipes = createAsyncThunk(
   }
 )
 export const getRecipeById = createAsyncThunk(
-  "displaylist/getRecipeById",
+  "displayList/getRecipeById",
   async (payload: string, ThunkApi) => {
     try {
       const res = await axiosInstance.get(payload)

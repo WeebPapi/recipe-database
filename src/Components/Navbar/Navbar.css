@@ -1,9 +1,32 @@
-.nav-links {
-  padding: 15px 0;
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+}
+.site-logo {
+  width: 200px;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  left: 2rem;
+}
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.logo-text {
+  color: rgb(2, 2, 129);
+  font-size: 20px;
+  font-weight: 700;
 }
 .nav-links a {
   color: #254d13;
   margin-right: 10px;
-  z-index: 20;
-  font-size: 22px;
+  font-size: 20px;
 }

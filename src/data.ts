@@ -1,10 +1,10 @@
-import { nanoid } from "@reduxjs/toolkit";
-import { FilterType } from "./store/displayList/displayList.slice";
+import { nanoid } from "@reduxjs/toolkit"
+import { FilterType } from "./store/displayList/displayList.slice"
 
 interface FilterData {
-  category: FilterType;
-  filterList: string[];
-  id: string;
+  category: FilterType
+  filterList: string[]
+  id: string
 }
 export const filtersBarData: FilterData[] = [
   {
@@ -28,7 +28,6 @@ export const filtersBarData: FilterData[] = [
   {
     category: "includeIngredients",
     filterList: [
-      "Chicken",
       "Beef",
       "Fish",
       "Rice",
@@ -37,6 +36,8 @@ export const filtersBarData: FilterData[] = [
       "Potato",
       "Cheese",
       "Eggs",
+      "Cucumber",
+      "Flour",
     ],
     id: nanoid(6),
   },
@@ -57,4 +58,4 @@ export const filtersBarData: FilterData[] = [
     filterList: ["Breakfast", "Brunch", "Lunch", "Supper", "Dessert", "Snack"],
     id: nanoid(6),
   },
-];
+]

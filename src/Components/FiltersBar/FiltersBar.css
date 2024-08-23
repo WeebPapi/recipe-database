@@ -3,7 +3,7 @@
   flex-direction: column;
   position: absolute;
   left: 2rem;
-  top: 0;
+  top: 40px;
 }
 .filters-tag {
   color: black;
