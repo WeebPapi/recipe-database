@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { IngredientCard } from "../"
 import DOMPurify from "dompurify"
 import "./LargeRecipe.css"
@@ -30,7 +30,6 @@ const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
   const recipe = useSelector(
     (state: RootState) => state.displayList.detailedRecipe
   )
-  const mounted = useRef(false)
   const favorites = useSelector((state: RootState) => state.favoritesList)
   const [favorited, setFavorited] = useState(
     favorites.filter((item) => item.id === id).length !== 0
@@ -59,13 +58,9 @@ const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
     else if (!newFavorited) dispatch(removeFavorite(id))
   }
   useEffect(() => {
-    if (mounted.current) {
-      console.log("working")
-      dispatch(getRecipeById(`${id}/information?apiKey=${API_KEY}`))
-      dispatch(resetUrl())
-    }
-    mounted.current = true
-  }, [])
+    dispatch(getRecipeById(`${id}/information?apiKey=${API_KEY}`))
+    dispatch(resetUrl())
+  }, [id])
   return (
     <div className="large-recipe-container">
       <div className="large-recipe-image">
