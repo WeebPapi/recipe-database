@@ -60,6 +60,7 @@ const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
   }
   useEffect(() => {
     if (mounted.current) {
+      console.log("working")
       dispatch(getRecipeById(`${id}/information?apiKey=${API_KEY}`))
       dispatch(resetUrl())
     }
