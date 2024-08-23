@@ -121,6 +121,9 @@ const displayListSlice = createSlice({
         servings: recipe.servings,
       }
     })
+    builder.addCase(getRecipeById.rejected, (_, action) => {
+      console.log(action)
+    })
   },
 })
 
