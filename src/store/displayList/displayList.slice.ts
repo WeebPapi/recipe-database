@@ -3,8 +3,6 @@ import { getRecipeById, getRecipes } from "./displayList.thunks"
 import { Ingredients } from "../../Components/DisplayedCards/DisplayedCards"
 import { RecipeType } from "../../recipeType"
 
-const API_KEY: string = import.meta.env.VITE_API_KEY
-
 export interface DisplayListElement {
   id: number
   image: string
@@ -53,7 +51,7 @@ const initialState: {
     diet: [],
   },
   detailedRecipe: {},
-  currentUrl: `random?number=5&apiKey=${API_KEY}`,
+  currentUrl: `random?number=5&`,
 }
 
 export type FilterType = "cuisine" | "type" | "includeIngredients" | "diet"
@@ -78,10 +76,10 @@ const displayListSlice = createSlice({
       state.currentUrl =
         "complexSearch?addRecipeInformation=true&fillIngredients=true&" +
         action.payload +
-        `&number=5&apiKey=${API_KEY}`
+        `&number=5&`
     },
     resetUrl: (state) => {
-      state.currentUrl = `random?number=5&apiKey=${API_KEY}`
+      state.currentUrl = `random?number=5&`
     },
   },
   extraReducers(builder) {

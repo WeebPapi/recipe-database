@@ -20,8 +20,6 @@ import { FaClock } from "react-icons/fa6"
 import { FaHeart } from "react-icons/fa"
 import { nanoid } from "@reduxjs/toolkit"
 
-const API_KEY = import.meta.env.VITE_API_KEY
-
 interface LargeRecipeProps {
   id: number
 }
@@ -58,7 +56,7 @@ const LargeRecipe: React.FC<LargeRecipeProps> = ({ id }) => {
     else if (!newFavorited) dispatch(removeFavorite(id))
   }
   useEffect(() => {
-    dispatch(getRecipeById(`${id}/information?apiKey=${API_KEY}`))
+    dispatch(getRecipeById(`${id}/information`))
     dispatch(resetUrl())
   }, [id])
   return (
