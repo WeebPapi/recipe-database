@@ -1,8 +1,22 @@
 .homepage-layout {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
+@media (max-width: 768px) {
+  .homepage-layout {
+    flex-direction: column;
+  }
+  .displayed-cards {
+    width: 80%;
+    flex-wrap: wrap;
+  }
+  .filters-bar {
+    width: 100%;
+    position: static;
+  }
+}
+
+

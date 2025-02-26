@@ -27,6 +27,22 @@
 }
 .nav-links a {
   color: #254d13;
-  margin-right: 10px;
   font-size: 20px;
+}
+.nav-links :first-child {
+  margin-right: 30px;
+}
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .site-logo {
+    position: static;
+  }
+  .navbar > div {
+    padding: 0 5%;
+  }
+
+
 }

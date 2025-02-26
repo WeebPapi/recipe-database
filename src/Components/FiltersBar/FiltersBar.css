@@ -1,9 +1,12 @@
 .filters-bar {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  justify-self: start;
+  width: 300px;
+  margin-bottom: 12rem;
+  /* position: absolute;
   left: 2rem;
-  top: 40px;
+  top: 40px; */
 }
 .filters-tag {
   color: black;
@@ -11,5 +14,14 @@
   font-weight: 600;
   text-align: left;
   padding-bottom: 5px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #f3f3f3;
+  width: 150px;
+}
+
+@media (max-width: 768px) {
+  .filters-bar {
+    padding: 0 10% 10% 10%;
+    margin: 0
+  }
+
 }
