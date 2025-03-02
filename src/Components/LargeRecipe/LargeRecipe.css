@@ -31,6 +31,9 @@
 .large-recipe-heading {
   display: flex;
   max-width: 556px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 .large-recipe-heading h1 {
   max-width: 380px;
@@ -122,7 +125,7 @@
     max-width: 100%;
   }
   .large-recipe-heading {
-    
+    justify-content: center;
 
     h1 {
       font-size: 32px;

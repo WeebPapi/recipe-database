@@ -51,7 +51,7 @@ const initialState: {
     diet: [],
   },
   detailedRecipe: {},
-  currentUrl: `random?number=5&`,
+  currentUrl: `random?number=4&`,
 }
 
 export type FilterType = "cuisine" | "type" | "includeIngredients" | "diet"
@@ -76,10 +76,10 @@ const displayListSlice = createSlice({
       state.currentUrl =
         "complexSearch?addRecipeInformation=true&fillIngredients=true&" +
         action.payload +
-        `&number=5&`
+        `&number=4&`
     },
     resetUrl: (state) => {
-      state.currentUrl = `random?number=5&`
+      state.currentUrl = `random?number=4&`
     },
   },
   extraReducers(builder) {
